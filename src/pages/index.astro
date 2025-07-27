@@ -1,0 +1,10 @@
+---
+import ReactApp from "../components/SPA";
+import Layouts from "../layouts.astro";
+
+// pages/index.astro
+---
+
+<Layouts>
+  <ReactApp client:only="react" />
+</Layouts>

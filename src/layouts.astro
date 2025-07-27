@@ -1,0 +1,24 @@
+---
+// layouts.astro
+import "./styles/global.css";
+import DarkVeilWrapper from "./components/ui/background";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <title>amirxon</title>
+  </head>
+  <body class="relative min-h-screen">
+    <div class="fixed inset-0 -z-10">
+      <DarkVeilWrapper client:load />
+    </div>
+
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
