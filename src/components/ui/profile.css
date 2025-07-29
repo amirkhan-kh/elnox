@@ -90,6 +90,7 @@
   border-radius: var(--card-radius);
   /* transform: translate3d(0, 0, 0.1px); */
   pointer-events: none;
+  
 }
 
 .pc-inside {
@@ -235,6 +236,7 @@
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  
 }
 
 .pc-mini-avatar img {
@@ -352,6 +354,7 @@
   .pc-card {
     height: 70svh;
     max-height: 450px;
+     aspect-ratio: 0;
   }
 
   .pc-details {

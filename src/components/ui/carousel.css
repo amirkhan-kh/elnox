@@ -35,7 +35,21 @@
 }
 @media only screen and (max-width: 1022px) {
   .carousel-track {
-    height: 56%;
+    height: 54%;
+  }
+  .carousel-item {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 908px) {
+  .carousel-container {
+    width: 100%;
+    height: 100%;
+  }
+  .carousel-track {
+    height: 52%;
   }
   .carousel-item {
     height: 100%;
@@ -47,7 +61,8 @@
     width: 100%;
   }
   .carousel-track {
-    height: 40%;
+    height: 36%;
+    
   }
   .carousel-item {
     height: 100%;

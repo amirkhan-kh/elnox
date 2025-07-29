@@ -17,7 +17,7 @@ export default function SpaceSoundManager() {
   const [currentIndex, setCurrentIndex] = useState(() =>
     Math.floor(Math.random() * soundPaths.length)
   );
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [pathname, setPathname] = useState(() => window.location.pathname);
 
   // 🔁 Random yangi index (oldingi bilan bir xil bo'lmasin)

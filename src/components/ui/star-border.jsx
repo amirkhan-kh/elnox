@@ -32,7 +32,7 @@ const StarBorder = ({
           animationDuration: speed,
         }}
       ></div>
-      <div className="inner-content  flex gap-x-6 ">{children}</div>
+      <div className="inner-content w-full  flex gap-0 sm:gap-x-6 ">{children}</div>
     </Component>
   );
 };
