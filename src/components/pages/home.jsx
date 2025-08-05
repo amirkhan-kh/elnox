@@ -26,7 +26,7 @@ export const Home = () => {
               handle="elnox2211"
               status="Online"
               contactText="Contact Me"
-              avatarUrl="/public/ChatGPT_Image_8_июн._2025_г.__18_34_42-removebg-preview.png"
+              avatarUrl="/ChatGPT_Image_8_июн._2025_г.__18_34_42-removebg-preview.png"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}

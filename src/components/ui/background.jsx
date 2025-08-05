@@ -4,28 +4,33 @@ import Beams from "../../theme/dark";
 import Squares from "../../theme/light";
 
 export default function DarkVeilWrapper() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const baseColor = theme === "dark" ? [0.0, 0.0, 1.0] : [1.0, 1.0, 1.0];
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const current = saved || (prefersDark ? "dark" : "light");
-    setTheme(current);
+  const saved = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const current = saved || (prefersDark ? "dark" : "light");
 
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      setTheme(isDark ? "dark" : "light");
-    });
+  setTheme(current);
 
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
+  // <-- Bu yerga dark classni tanani o'ziga qo'shish:
+  if (!saved) {
+    document.documentElement.classList.add("dark");
+  }
 
-    return () => observer.disconnect();
-  }, []);
+  const observer = new MutationObserver(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  return () => observer.disconnect();
+}, []);
+
 
   return (
     <>
