@@ -7,7 +7,8 @@ export default function DarkVeilWrapper() {
   const [theme, setTheme] = useState("dark");
   const baseColor = theme === "dark" ? [0.0, 0.0, 1.0] : [1.0, 1.0, 1.0];
   useEffect(() => {
-  const saved = localStorage.getItem("theme");
+  setTheme("dark");
+  document.documentElement.classList.add("dark");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const current = saved || (prefersDark ? "dark" : "light");
 
