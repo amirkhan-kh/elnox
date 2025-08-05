@@ -13,7 +13,6 @@ export default function DarkVeilWrapper() {
 
   setTheme(current);
 
-  // <-- Bu yerga dark classni tanani o'ziga qo'shish:
   if (!saved) {
     document.documentElement.classList.add("dark");
   }
@@ -34,7 +33,7 @@ export default function DarkVeilWrapper() {
 
   return (
     <>
-      {theme === "dark" && (
+      {theme === "light" && (
         <div
           style={{
             width: "100%",
@@ -56,7 +55,7 @@ export default function DarkVeilWrapper() {
         </div>
       )}
 
-      {theme === "light" && (
+      {theme === "dark" && (
         <div style={{ width: "100vw", height: "100%",  background: "#C4E1E6"}}>
           <Squares
             speed={0.5}

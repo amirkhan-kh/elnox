@@ -29,9 +29,9 @@ export default function ThemeToggle() {
       <StarBorder as="button" className="custom-class" color="cyan" speed="3s">
         <button
           onClick={toggleTheme}
-           className={` text-sm font-medium text-[#547792] hover:text-[#314656] p-3`}
+           className={` text-sm font-medium text-[#547792] hover:text-[#314656] p-1.5`}
         >
-          {theme === "dark" ? <IoSunnyOutline className="p-0"/> : <IoMoon size={10} color="#000" className="p-0"/>}
+          {theme === "dark" ? <IoMoon size={15} className="p-0"/> : <IoSunnyOutline size={15} color="#000" className="p-0"/>}
         </button>
       </StarBorder>
   );
