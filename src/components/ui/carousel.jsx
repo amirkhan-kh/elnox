@@ -106,15 +106,59 @@ const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 export default function Carousel({
   items = DEFAULT_ITEMS,
-  baseWidth = 300,
+  baseWidth,
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,
   loop = false,
   round = false,
 }) {
+
+const [responsiveWidth, setResponsiveWidth] = useState(() => {
+  const width = window.innerWidth;
+
+  if (width >= 1024) return 300;        // Katta ekranlar
+  if (width >= 640) return 300;         // Planshet
+  if (width >= 570) return 570;
+  if (width >= 540) return 540;
+  if (width >= 490) return 490;
+  if (width >= 440) return 440;
+  if (width >= 390) return 390;
+  if (width >= 340) return 340;
+  if (width >= 290) return 290;
+  if (width >= 270) return 270;
+  if (width >= 240) return 240;
+  return 240;                           // Eng kichik limit
+});
+
+useEffect(() => {
+  const handleResize = () => {
+    const width = window.innerWidth;
+
+    if (width >= 1024) setResponsiveWidth(300);
+    else if (width >= 640) setResponsiveWidth(300);
+    else if (width >= 570) setResponsiveWidth(570);
+    else if (width >= 540) setResponsiveWidth(540);
+    else if (width >= 490) setResponsiveWidth(490);
+    else if (width >= 440) setResponsiveWidth(440);
+    else if (width >= 390) setResponsiveWidth(390);
+    else if (width >= 340) setResponsiveWidth(340);
+    else if (width >= 290) setResponsiveWidth(290);
+    else if (width >= 270) setResponsiveWidth(270);
+    else if (width >= 240) setResponsiveWidth(240);
+    else setResponsiveWidth(240);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+
+
+    const actualWidth = baseWidth || responsiveWidth;
+
   const containerPadding = 16;
-  const itemWidth = baseWidth - containerPadding * 2;
+  const itemWidth = actualWidth - containerPadding * 2;
   const trackItemOffset = itemWidth + GAP;
 
   const carouselItems = loop ? [...items, items[0]] : items;
@@ -206,8 +250,8 @@ export default function Carousel({
       ref={containerRef}
       className={`carousel-container ${round ? "round" : ""}`}
       style={{
-        width: `${baseWidth}px`,
-        ...(round && { height: `${baseWidth}px`, borderRadius: "50%" }),
+        width: `${actualWidth}px`,
+        ...(round && { height: `${actualWidth}px`, borderRadius: "50%" }),
       }}
     >
       <motion.div

@@ -1,0 +1,148 @@
+.carousel-containerp {
+    position: relative;
+}
+
+.carousel-trackp {
+    display: flex;
+    width: 500px;
+}
+.carousel-itemp {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: grab;
+}
+@media only screen and (max-width: 1022px) {
+    .carousel-trackp {
+        height: 54%;
+    }
+    .carousel-itemp {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 908px) {
+    .carousel-containerp {
+        width: 100%;
+        height: 100%;
+    }
+    .carousel-trackp {
+        height: 52%;
+    }
+    .carousel-itemp {
+        height: 100%;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .carousel-containerp {
+        width: 100%;
+    }
+    .carousel-trackp {
+        height: 36%;
+    }
+    .carousel-itemp {
+        height: 100%;
+        width: 100%;
+    }
+}
+.carousel-itemp:active {
+    cursor: grabbing;
+}
+
+
+.carousel-itemp.roundp {
+    position: relative;
+    bottom: 0.1em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel-item-headerp.roundp {
+    padding: 0;
+    margin: 0;
+}
+
+.carousel-indicators-containerp.roundp {
+    position: absolute;
+    z-index: 2;
+    bottom: 3em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel-indicatorp.active {
+    background-color: #333333;
+}
+
+.carousel-indicatorp.inactive {
+    background-color: rgba(51, 51, 51, 0.4);
+}
+
+.carousel-item-headerp {
+    width: 100%;
+    height: 80%;
+}
+
+.carousel-icon-containerp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-iconp {
+    height: 56px;
+    width: 56px;
+}
+
+
+
+.carousel-item-descriptionp {
+    font-size: 14px;
+    color: #fff;
+}
+
+.carousel-indicators-containerp {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.carousel-indicatorsp {
+    margin-top: 16px;
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.carousel-indicatorp {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+
+.carousel-indicatorp.active {
+    background-color: #fff;
+}
+
+.carousel-indicatorp.inactive {
+    background-color: #555;
+}
+.responsive-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 16 / 9; /* yoki 3 / 2, yoki rasm nisbati */
+  border-radius: 4px;
+}

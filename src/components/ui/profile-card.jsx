@@ -19,16 +19,9 @@ const ANIMATION_CONFIG = {
 const clamp = (value, min = 0, max = 100) =>
   Math.min(Math.max(value, min), max);
 
-const round = (value, precision = 3) =>
-  parseFloat(value.toFixed(precision));
+const round = (value, precision = 3) => parseFloat(value.toFixed(precision));
 
-const adjust = (
-  value,
-  fromMin,
-  fromMax,
-  toMin,
-  toMax
-) =>
+const adjust = (value, fromMin, fromMax, toMin, toMax) =>
   round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
 
 const easeInOutCubic = (x) =>
@@ -62,12 +55,7 @@ const ProfileCardComponent = ({
 
     let rafId = null;
 
-    const updateCardTransform = (
-      offsetX,
-      offsetY,
-      card,
-      wrap
-    ) => {
+    const updateCardTransform = (offsetX, offsetY, card, wrap) => {
       const width = card.clientWidth;
       const height = card.clientHeight;
 
@@ -82,7 +70,11 @@ const ProfileCardComponent = ({
         "--pointer-y": `${percentY}%`,
         "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
         "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
-        "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+        "--pointer-from-center": `${clamp(
+          Math.hypot(percentY - 50, percentX - 50) / 50,
+          0,
+          1
+        )}`,
         "--pointer-from-top": `${percentY / 100}`,
         "--pointer-from-left": `${percentX / 100}`,
         "--rotate-x": `${round(-(centerX / 5))}deg`,
@@ -94,13 +86,7 @@ const ProfileCardComponent = ({
       });
     };
 
-    const createSmoothAnimation = (
-      duration,
-      startX,
-      startY,
-      card,
-      wrap
-    ) => {
+    const createSmoothAnimation = (duration, startX, startY, card, wrap) => {
       const startTime = performance.now();
       const targetX = wrap.clientWidth / 2;
       const targetY = wrap.clientHeight / 2;
@@ -196,7 +182,8 @@ const ProfileCardComponent = ({
 
       animationHandlers.updateCardTransform(
         card.clientHeight / 2 + gamma * mobileTiltSensitivity,
-        card.clientWidth / 2 + (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
+        card.clientWidth / 2 +
+          (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
         card,
         wrap
       );
@@ -218,18 +205,20 @@ const ProfileCardComponent = ({
     const deviceOrientationHandler = handleDeviceOrientation;
 
     const handleClick = () => {
-      if (!enableMobileTilt || location.protocol !== 'https:') return;
-      if (typeof window.DeviceMotionEvent.requestPermission === 'function') {
-        window.DeviceMotionEvent
-          .requestPermission()
-          .then(state => {
-            if (state === 'granted') {
-              window.addEventListener('deviceorientation', deviceOrientationHandler);
+      if (!enableMobileTilt || location.protocol !== "https:") return;
+      if (typeof window.DeviceMotionEvent.requestPermission === "function") {
+        window.DeviceMotionEvent.requestPermission()
+          .then((state) => {
+            if (state === "granted") {
+              window.addEventListener(
+                "deviceorientation",
+                deviceOrientationHandler
+              );
             }
           })
-          .catch(err => console.error(err));
+          .catch((err) => console.error(err));
       } else {
-        window.addEventListener('deviceorientation', deviceOrientationHandler);
+        window.addEventListener("deviceorientation", deviceOrientationHandler);
       }
     };
 
@@ -255,7 +244,7 @@ const ProfileCardComponent = ({
       card.removeEventListener("pointermove", pointerMoveHandler);
       card.removeEventListener("pointerleave", pointerLeaveHandler);
       card.removeEventListener("click", handleClick);
-      window.removeEventListener('deviceorientation', deviceOrientationHandler);
+      window.removeEventListener("deviceorientation", deviceOrientationHandler);
       animationHandlers.cancelAnimation();
     };
   }, [
@@ -269,12 +258,11 @@ const ProfileCardComponent = ({
   ]);
 
   const cardStyle = useMemo(
-    () =>
-    ({
+    () => ({
       "--icon": iconUrl ? `url(${iconUrl})` : "none",
       "--grain": grainUrl ? `url(${grainUrl})` : "none",
       "--behind-gradient": showBehindGradient
-        ? (behindGradient ?? DEFAULT_BEHIND_GRADIENT)
+        ? behindGradient ?? DEFAULT_BEHIND_GRADIENT
         : "none",
       "--inner-gradient": innerGradient ?? DEFAULT_INNER_GRADIENT,
     }),
@@ -309,21 +297,26 @@ const ProfileCardComponent = ({
             {showUserInfo && (
               <div className="pc-user-info">
                 <div className="pc-user-details">
-                  {/* <div className="pc-mini-avatar">
-                    <img
-                      src={miniAvatarUrl || avatarUrl}
-                      alt={`${name || "User"} mini avatar`}
-                      loading="lazy"
-                      onError={(e) => {
-                        const target = e.target;
-                        target.style.opacity = "0.5";
-                        target.src = avatarUrl;
-                      }}
-                    />
-                  </div> */}
                   <div className="pc-user-text">
-                      <ShinyText text={`@${handle}`} disabled={false} speed={3} className=' text-[15px]' />
-                      <ShinyText text={`${status}`} disabled={false} speed={3} className=' text-[15px]' />
+                    <a
+                      href='https://t.me/elnox2211'
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ShinyText
+                        text={`@${handle}`}
+                        disabled={false}
+                        speed={3}
+                        className="text-[15px]"
+                      />
+                    </a>
+
+                    <ShinyText
+                      text={`${status}`}
+                      disabled={false}
+                      speed={3}
+                      className=" text-[15px]"
+                    />
                   </div>
                 </div>
                 <button
@@ -333,16 +326,30 @@ const ProfileCardComponent = ({
                   type="button"
                   aria-label={`Contact ${name || "user"}`}
                 >
-
-                   <ShinyText text={`${contactText}`} disabled={false} speed={3} className=' text-[15px]' />
+                  <ShinyText
+                    text={`${contactText}`}
+                    disabled={false}
+                    speed={3}
+                    className=" text-[15px]"
+                  />
                 </button>
               </div>
             )}
           </div>
           <div className="pc-content">
             <div className="pc-details">
-                <ShinyText text={`${name}`} disabled={false} speed={3} className=' text-3xl mb-1.5' />
-                <ShinyText text={`${title}`} disabled={false} speed={3} className=' text-[15px]' />
+              <ShinyText
+                text={`${name}`}
+                disabled={false}
+                speed={3}
+                className=" text-3xl mb-1.5"
+              />
+              <ShinyText
+                text={`${title}`}
+                disabled={false}
+                speed={3}
+                className=" text-[15px]"
+              />
             </div>
           </div>
         </div>

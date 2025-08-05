@@ -5,6 +5,7 @@ import ShinyText from "../ui/shuny-text";
 import StarBorder from "../ui/star-border";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { RiTelegram2Fill } from "react-icons/ri";
+import { SiReaddotcv } from "react-icons/si";
 export const Home = () => {
   const handleAnimationComplete = () => {
     console.log("All letters have animated!");
@@ -32,6 +33,9 @@ export const Home = () => {
               onContactClick={() => {
                 window.location.href = "tel:+998901802201";
               }}
+              onHandleClick={() => {
+                window.location.href = "https://t.me/elnox221";
+              }}  
               className="h-full"
             />
           </div>
@@ -102,12 +106,20 @@ export const Home = () => {
                 </StarBorder>
                  <StarBorder
                   as="button"
-                  className=""
+                  className="mx-3"
                   color="cyan"
                   speed="4.5s"
                 >
 
                 <a className=" py-1.5 px-3.5"  href="https://www.linkedin.com/in/amirxon-xodisaliyev-550849301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><FaLinkedin /></a>
+                </StarBorder>
+                 <StarBorder
+                  as="button"
+                  className=""
+                  color="cyan"
+                  speed="4.5s"
+                >
+                  <a className="py-1.5 px-3.5 " href="" download><SiReaddotcv /></a>
                 </StarBorder>
               </div>
             </div>

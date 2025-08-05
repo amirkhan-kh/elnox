@@ -4,3 +4,24 @@
     max-width: 1200px;
    
 }
+/* global.css yoki tailwind config ichida */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE va Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+@keyframes bounceLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+}
+
+.bounce-left {
+  animation: bounceLeft 1s infinite;
+}

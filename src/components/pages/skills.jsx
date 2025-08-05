@@ -38,7 +38,6 @@ export const Skills = () => {
           {/* Left: Carousel */}
           <div className="w-full sm:w-[300px] flex-shrink-0">
             <Carousel
-              baseWidth={300}
               autoplay={true}
               autoplayDelay={3500}
               pauseOnHover={true}
@@ -80,7 +79,7 @@ export const Skills = () => {
                   className="border border-[#547792] p-2.5 rounded-[10px]"
                 />
                 <ShinyText
-                  text=" Frontend Stacks"
+                  text=" Frontend "
                   disabled={false}
                   speed={3}
                   className=" text-[20px]"
@@ -120,7 +119,7 @@ export const Skills = () => {
                   className="border border-[#547792] p-2.5 rounded-[10px]"
                 />
                 <ShinyText
-                  text=" Design Stacks"
+                  text=" Design "
                   disabled={false}
                   speed={3}
                   className=" text-[20px]"
@@ -160,7 +159,7 @@ export const Skills = () => {
                   className="border border-[#547792] p-2.5 rounded-[10px]"
                 />
                 <ShinyText
-                  text=" Animation Stacks"
+                  text=" Animation"
                   disabled={false}
                   speed={3}
                   className=" text-[20px]"

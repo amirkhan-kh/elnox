@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import AnimatedContent from "./animated-content";
 import StarBorder from "./star-border";
 import { IoSunnyOutline, IoMoon  } from "react-icons/io5";
 
@@ -26,18 +25,7 @@ export default function ThemeToggle() {
   };
 
   return (
-    <AnimatedContent
-      distance={100}
-      direction="vertical"
-      reverse={false}
-      duration={1.2}
-      ease="bounce.out"
-      initialOpacity={0.2}
-      animateOpacity
-      scale={0.1}
-      threshold={0.2}
-      delay={0.3}
-    >
+    
       <StarBorder as="button" className="custom-class" color="cyan" speed="3s">
         <button
           onClick={toggleTheme}
@@ -46,6 +34,5 @@ export default function ThemeToggle() {
           {theme === "dark" ? <IoSunnyOutline className="p-0"/> : <IoMoon size={10} color="#000" className="p-0"/>}
         </button>
       </StarBorder>
-    </AnimatedContent>
   );
 }
