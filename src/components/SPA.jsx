@@ -8,10 +8,13 @@ import Header from "./layouts/header/header";
 import { SinglePage } from "./single-page";
 import NotFoundPage from "./layouts/not-found-page";
 import GithubModal from "./ui/git-hub-modal";
+import PageLoader from "./ui/page-loader";
 
 export default function ReactApp() {
   return (
     <BrowserRouter>
+    <PageLoader>
+
       <Header />
        <GithubModal />
       <main>
@@ -24,6 +27,7 @@ export default function ReactApp() {
            <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+    </PageLoader>
     </BrowserRouter>
   );
 }
