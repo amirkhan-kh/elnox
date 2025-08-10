@@ -5,7 +5,7 @@ import ShinyText from "../ui/shuny-text";
 import StarBorder from "../ui/star-border";
 import { GoArrowUpRight } from "react-icons/go";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
+import {  FaChevronRight } from "react-icons/fa";
 
 export const Projects = () => {
   const scrollContainerRef = useRef(null);
@@ -41,18 +41,19 @@ export const Projects = () => {
       >
         <div className="relative">
           {/* Left Button faqat '/' route da ko'rinadi */}
-          {location.pathname === "/" && (
+
+          <div className="block sm:hidden ">
             <button
               onClick={() => {
                 if (scrollContainerRef.current) {
-                  scrollContainerRef.current.scrollLeft -= 1000;
+                  scrollContainerRef.current.scrollLeft += 1000;
                 }
               }}
-              className="absolute z-10 left-3 top-1/2 -translate-y-1/2 bg-[#547792] text-white p-2 rounded-full shadow-lg hover:bg-gray-800 transition bounce-left"
+              className="absolute z-10 right-3 top-1/2 -translate-y-1/2 bg-[#547792] text-white p-2 rounded-full shadow-lg hover:bg-gray-800 transition bounce-left"
             >
-              <FaChevronLeft />
+              <FaChevronRight />
             </button>
-          )}
+          </div>
 
           <div
             ref={scrollContainerRef}
