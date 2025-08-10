@@ -14,8 +14,8 @@ export default function Header() {
             color="cyan"
             speed="4.5s"
           >
-            <NavLink href="/" label="Home" />
-            <NavLink href="/about" label="AboutMe" />
+            {/* <NavLink href="/" label="Home" /> */}
+            <NavLink href="/" label="AboutMe" />
             <NavLink href="/skills" label="Skills" />
             <NavLink href="/projects" label="Projects" />
           </StarBorder>
